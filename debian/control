@@ -1,6 +1,6 @@
 Source: libzstd
-Maintainer: Deepin Developer <deepin-dev@deepin.org>
-Uploaders: Deepin Packages Builder <packages@deepin.org>
+Maintainer: RPM packaging team <team+pkg-rpm@tracker.debian.org>
+Uploaders: Peter Pentchev <roam@debian.org>
 Section: libs
 Priority: optional
 Build-Depends: d-shlibs,
@@ -10,8 +10,8 @@ Build-Depends: d-shlibs,
                liblzma-dev,
                zlib1g-dev
 Standards-Version: 4.6.0
-#Vcs-Browser
-#Vcs-Git
+Vcs-Browser: https://salsa.debian.org/pkg-rpm-team/libzstd
+Vcs-Git: https://salsa.debian.org/pkg-rpm-team/libzstd.git
 Homepage: https://github.com/facebook/zstd
 Rules-Requires-Root: binary-targets
 
