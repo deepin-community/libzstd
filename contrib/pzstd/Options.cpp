@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-present, Facebook, Inc.
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
  * All rights reserved.
  *
  * This source code is licensed under both the BSD-style license (found in the
@@ -77,7 +77,7 @@ void usage() {
   std::fprintf(stderr, "  -p, --processes   #    : number of threads to use for (de)compression (default:<numcpus>)\n");
 
   std::fprintf(stderr, "ZSTD options:\n");
-  std::fprintf(stderr, "  -#                     : # compression level (1-%d, default:<numcpus>)\n", kMaxNonUltraCompressionLevel);
+  std::fprintf(stderr, "  -#                     : # compression level (1-%d, default:%d)\n", kMaxNonUltraCompressionLevel, kDefaultCompressionLevel);
   std::fprintf(stderr, "  -d, --decompress       : decompression\n");
   std::fprintf(stderr, "  -o                file : result stored into `file` (only if 1 input file)\n");
   std::fprintf(stderr, "  -f, --force            : overwrite output without prompting, (de)compress links\n");
