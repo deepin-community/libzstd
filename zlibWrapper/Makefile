@@ -13,7 +13,7 @@ ZLIB_PATH ?= .
 ZSTDLIBDIR = ../lib
 ZSTDLIBRARY = $(ZSTDLIBDIR)/libzstd.a
 ZLIBWRAPPER_PATH = .
-#GZFILES = gzclose.o gzlib.o gzread.o gzwrite.o
+GZFILES = gzclose.o gzlib.o gzread.o gzwrite.o
 EXAMPLE_PATH = examples
 PROGRAMS_PATH = ../programs
 TEST_FILE = ../doc/zstd_compression_format.md
@@ -66,9 +66,10 @@ test: example fitblk example_zstd fitblk_zstd zwrapbench minigzip minigzip_zstd
 	./zwrapbench -qi1b3B1K $(TEST_FILE)
 	./zwrapbench -rqi1b1e3 ../lib
 
-#valgrindTest: ZSTDLIBRARY = $(ZSTDLIBDIR)/libzstd.so
-valgrindTest: VALGRIND = LD_LIBRARY_PATH=$(ZSTDLIBDIR) valgrind --track-origins=yes --leak-check=full --error-exitcode=1
-valgrindTest: clean example fitblk example_zstd fitblk_zstd zwrapbench
+.PHONY: test-valgrind
+#test-valgrind: ZSTDLIBRARY = $(ZSTDLIBDIR)/libzstd.so
+test-valgrind: VALGRIND = LD_LIBRARY_PATH=$(ZSTDLIBDIR) valgrind --track-origins=yes --leak-check=full --error-exitcode=1
+test-valgrind: clean example fitblk example_zstd fitblk_zstd zwrapbench
 	@echo "\n ---- valgrind tests ----"
 	$(VALGRIND) ./example
 	$(VALGRIND) ./example_zstd
@@ -82,14 +83,14 @@ valgrindTest: clean example fitblk example_zstd fitblk_zstd zwrapbench
 #.c.o:
 #	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
-minigzip: minigzip.o zstd_zlibwrapper.o $(ZSTDLIBRARY)
+minigzip: minigzip.o zstd_zlibwrapper.o $(GZFILES) $(ZSTDLIBRARY)
 
-minigzip_zstd: minigzip.o zstdTurnedOn_zlibwrapper.o $(ZSTDLIBRARY)
+minigzip_zstd: minigzip.o zstdTurnedOn_zlibwrapper.o $(GZFILES) $(ZSTDLIBRARY)
 	$(LINK.o) $^ $(LDLIBS) $(OUTPUT_OPTION)
 
-example: example.o zstd_zlibwrapper.o $(ZSTDLIBRARY)
+example: example.o zstd_zlibwrapper.o $(GZFILES) $(ZSTDLIBRARY)
 
-example_zstd: example.o zstdTurnedOn_zlibwrapper.o $(ZSTDLIBRARY)
+example_zstd: example.o zstdTurnedOn_zlibwrapper.o $(GZFILES) $(ZSTDLIBRARY)
 	$(LINK.o) $^ $(LDLIBS) $(OUTPUT_OPTION)
 
 fitblk: fitblk.o zstd_zlibwrapper.o $(ZSTDLIBRARY)
