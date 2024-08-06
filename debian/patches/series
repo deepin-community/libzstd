@@ -7,3 +7,4 @@
 0018-kfreebsd-ftbfs-utime-now.patch
 0022-tests-timeout.patch
 0023-cmake-min-3.13.patch
+0024-no-lessopen-test.patch

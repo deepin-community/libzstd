@@ -1,3 +1,27 @@
+libzstd (1.5.6+dfsg-1) unstable; urgency=medium
+
+  * Add the 0024-no-lessopen-test patch to skip a test until
+    #1073071 is fixed. Closes: #1042737
+  * Add the year 2024 to my debian/* copyright notice.
+  * Declare compliance with Policy 4.7.0 with no changes.
+  * Use X-DH-Compat instead of debian/compat.
+  * Let debhelper add some default dependencies automatically.
+  * New upstream version:
+    - Closes: #1072590
+    - stop excluding two files that were removed
+    - add the upstream OpenPGP key
+    - reset the repack suffix from dfsg2 to dfsg
+    - update some patches to catch up with upstream changes:
+      - 0015-Skip-dev-random-tests-on-hurd
+      - 0017-alpha-fbfs-st_mtime
+      - 0018-kfreebsd-ftbfs-utime-now
+      - 0023-cmake-min-3.13
+    - refresh the line numbers in some patches:
+      - 0006-Use-bash-for-test-script-portablitity
+      - 0013-skip-memory-greedy-tests
+
+ -- Peter Pentchev <roam@debian.org>  Thu, 13 Jun 2024 16:32:12 +0300
+
 libzstd (1.5.5+dfsg2-2) unstable; urgency=medium
 
   * Clean up a directory of symlinks created by the test suite.
