@@ -5,7 +5,7 @@ Last-Update: 2024-06-13
 
 --- a/programs/util.c
 +++ b/programs/util.c
-@@ -35,7 +35,7 @@
+@@ -30,7 +30,7 @@
  #  include <unistd.h>     /* chown, stat */
  #  include <sys/stat.h>   /* utimensat, st_mtime */
  #  if (PLATFORM_POSIX_VERSION >= 200809L && (defined(st_mtime) || defined(__alpha__))) \

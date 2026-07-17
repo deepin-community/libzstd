@@ -1,3 +1,35 @@
+libzstd (1.5.7+dfsg-1) unstable; urgency=medium
+
+  * Use debputy's X-Style: black.
+  * Add the year 2025 to my debian/* copyright notice.
+  * Declare compliance with Policy 4.7.1 with no changes.
+  * Try to get the Salsa CI jobs running:
+    - use the recipes/debian CI definition
+    - honor the .gitattributes file in the Salsa CI jobs
+    - raise the test timeout even further: 10 -> 50 minutes
+  * Force the .tar.gz download, it is the only signed one.
+    Addresses: !2
+  * Actually pass DH_CMAKE_CONFIGURE_OPTS to dh!
+    Addresses: !1
+  * New upstream release:
+    - drop the 0025-tests-fix-non-regular-file-test-on-GNU-Hurd patch,
+      applied upstream
+    - regenerate the 0023-cmake-min-3.13 patch
+    - refresh line numbers in the 0013-skip-memory-greedy-tests,
+      0015-Skip-dev-random-tests-on-hurd, 0017-alpha-fbfs-st_mtime, and
+      0018-kfreebsd-ftbfs-utime-now patches
+
+ -- Peter Pentchev <roam@debian.org>  Thu, 13 Mar 2025 23:58:55 +0200
+
+libzstd (1.5.6+dfsg-2) unstable; urgency=medium
+
+  * Fix the udeb install location: install files into /usr/lib, not
+    into /lib. Do that using an executable libzstd1-udeb.install file that
+    only grabs the usr/lib/ parts of the libzstd1.install one.
+  * Add a patch to fix the test suite on hurd-amd64. Closes: #1086343
+
+ -- Peter Pentchev <roam@debian.org>  Mon, 30 Dec 2024 03:16:50 +0200
+
 libzstd (1.5.6+dfsg-1) unstable; urgency=medium
 
   * Add the 0024-no-lessopen-test patch to skip a test until

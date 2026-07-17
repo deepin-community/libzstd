@@ -2,7 +2,7 @@ Description: Fix ftbfs on alpha, see #962676
 From: Helmut Grohne <helmut@subdivi.de>
 --- a/programs/util.c
 +++ b/programs/util.c
-@@ -34,7 +34,7 @@
+@@ -29,7 +29,7 @@
  #else
  #  include <unistd.h>     /* chown, stat */
  #  include <sys/stat.h>   /* utimensat, st_mtime */

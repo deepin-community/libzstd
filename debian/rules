@@ -17,14 +17,14 @@ export PREFIX=/usr
 HELP2MAN = help2man --no-info --help-option="'-h'" --no-discard-stderr
 mandir := $(CURDIR)/debian/zstd/usr/share/man/man1
 
-DH_AUTO_CONFIGURE_OPTS := \
+DH_CMAKE_CONFIGURE_OPTS := \
 	-DCMAKE_LIBRARY_ARCHITECTURE=${DEB_HOST_MULTIARCH} \
 	-DZSTD_LEGACY_SUPPORT:BOOL=ON \
 
 ifneq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
-	DH_AUTO_CONFIGURE_OPTS += -DBUILD_TESTING:BOOL=OFF
+	DH_CMAKE_CONFIGURE_OPTS += -DBUILD_TESTING:BOOL=OFF
 else
-	DH_AUTO_CONFIGURE_OPTS += -DBUILD_TESTING:BOOL=ON
+	DH_CMAKE_CONFIGURE_OPTS += -DBUILD_TESTING:BOOL=ON
 endif
 
 ifeq (,$(filter terse,$(DEB_BUILD_OPTIONS)))
@@ -55,11 +55,6 @@ execute_after_dh_auto_build:
 override_dh_auto_install:
 	dh_auto_install -- libdir=/usr/lib/${DEB_HOST_MULTIARCH}
 	dh_auto_install -D contrib/pzstd
-
-ifeq (,$(filter noudeb,$(DEB_BUILD_PROFILES)))
-execute_after_dh_install:
-	cp -r debian/libzstd1/usr debian/libzstd1-udeb/
-endif
 
 override_dh_makeshlibs:
 	dh_makeshlibs -plibzstd1 -V'libzstd1 (>= 1.5.5)' --add-udeb=libzstd1-udeb
