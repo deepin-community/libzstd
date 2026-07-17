@@ -6,7 +6,7 @@ Description: Skip test failing on GNU/Hurd when writing on /dev/zero or
 From: Alex Mestiashvili <mestia@debian.org>
 --- a/tests/playTests.sh
 +++ b/tests/playTests.sh
-@@ -498,14 +498,19 @@
+@@ -494,14 +494,19 @@
  zstd -v --rm tmp2 -o tmp2.zst -c > tmp3.zst
  test -f tmp2
  test -f tmp3.zst

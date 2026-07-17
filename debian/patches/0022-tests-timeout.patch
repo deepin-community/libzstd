@@ -1,10 +1,10 @@
-Description: Raise the timeout for test commands to 10 minutes
+Description: Raise the timeout for test commands to 50 minutes
  Some of the tests, e.g. the window-resize one, may take a long time on
  busy builder hosts.
 Bug-Debian: https://bugs.debian.org/1032592
 Forwarded: no
 Author: Peter Pentchev <roam@ringlet.net>
-Last-Update: 2023-06-22
+Last-Update: 2025-03-13
 
 --- a/tests/cli-tests/run.py
 +++ b/tests/cli-tests/run.py
@@ -13,7 +13,7 @@ Last-Update: 2023-06-22
      )
      parser.add_argument("--verbose", action="store_true", help="Verbose test output.")
 -    parser.add_argument("--timeout", default=200, type=int, help="Test case timeout in seconds. Set to 0 to disable timeouts.")
-+    parser.add_argument("--timeout", default=60 * 10, type=int, help="Test case timeout in seconds. Set to 0 to disable timeouts.")
++    parser.add_argument("--timeout", default=60 * 50, type=int, help="Test case timeout in seconds. Set to 0 to disable timeouts.")
      parser.add_argument(
          "--exec-prefix",
          default=None,
