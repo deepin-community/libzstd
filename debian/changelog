@@ -1,3 +1,12 @@
+libzstd (1.5.7+dfsg-1deepin2) unstable; urgency=medium
+
+  * fix(cve): CVE-2026-124851 (unknown) - decompress: prevent stale
+    literal leaks after output buffer wraps   Upstream:
+    https://github.com/meta/zstd/commit/0c9d297531a9f15a717ff24604afc084
+    3b3b1427
+
+ -- deepin-ci-robot <packages@deepin.org>  Wed, 25 Nov 2026 12:08:11 +0800
+
 libzstd (1.5.7+dfsg-1deepin1) unstable; urgency=medium
 
   * Rebuild with LTO enabled (dpkg vendor feature optimize/lto).
